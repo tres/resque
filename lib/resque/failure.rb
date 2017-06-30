@@ -14,6 +14,7 @@ module Resque
     #   :queue     - The string name of the queue from which the job was pulled
     #   :payload   - The job's payload
     def self.create(options = {})
+      puts options[:exception].message
       puts options[:exception].backtrace.join("\n")
       backend.new(*options.values_at(:exception, :worker, :queue, :payload)).save
     end
